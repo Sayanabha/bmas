@@ -1,0 +1,274 @@
+/* src/styles/WhyShorbot.module.css */
+
+/* ── Section wrapper ─────────────────────────────────────── */
+.section {
+  padding: var(--space-24) 0;
+  background: var(--color-bg);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative background pattern */
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(255,107,53,0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(46,196,182,0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* ── Header ──────────────────────────────────────────────── */
+.header {
+  text-align: center;
+  margin-bottom: var(--space-16);
+}
+
+.header .section-subtitle {
+  margin: 0 auto;
+}
+
+/* ── Reason cards grid ───────────────────────────────────── */
+.reasonsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+  margin-bottom: var(--space-16);
+}
+
+/* ── Individual reason card ──────────────────────────────── */
+.reasonCard {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-base);
+}
+
+.reasonCard:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-primary);
+}
+
+/* Top color bar */
+.reasonCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-carnival);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-base);
+}
+
+.reasonCard:hover::before {
+  transform: scaleX(1);
+}
+
+.reasonIcon {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  background: rgba(255, 107, 53, 0.10);
+  flex-shrink: 0;
+}
+
+.reasonTitle {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.reasonDesc {
+  font-size: var(--text-base);
+  color: var(--color-muted);
+  line-height: 1.7;
+  flex: 1;
+}
+
+.reasonDesc em {
+  font-style: normal;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* ── Comparison table wrapper ────────────────────────────── */
+.tableWrapper {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+/* ── Table header ────────────────────────────────────────── */
+.tableHead {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  background: var(--color-surface-2);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tableHeadCell {
+  padding: var(--space-4) var(--space-6);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--text-base);
+  color: var(--color-text);
+}
+
+/* The "BMAS" column gets a carnival highlight */
+.tableHeadCell.highlight {
+  background: rgba(255, 107, 53, 0.08);
+  color: var(--color-primary);
+  text-align: center;
+  border-left: 1px solid rgba(255, 107, 53, 0.20);
+  border-right: 1px solid rgba(255, 107, 53, 0.20);
+}
+
+.tableHeadCell.dimmed {
+  color: var(--color-muted);
+  text-align: center;
+}
+
+/* ── Table row ───────────────────────────────────────────── */
+.tableRow {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  border-bottom: 1px solid var(--color-border);
+  transition: background var(--transition-fast);
+}
+
+.tableRow:last-child {
+  border-bottom: none;
+}
+
+.tableRow:hover {
+  background: var(--color-surface-2);
+}
+
+.tableCell {
+  padding: var(--space-4) var(--space-6);
+  font-size: var(--text-base);
+  color: var(--color-text-soft);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.tableCell.featureCell {
+  font-weight: 500;
+  color: var(--color-text);
+  font-family: var(--font-heading);
+}
+
+.tableCell.bmasCell {
+  justify-content: center;
+  background: rgba(255, 107, 53, 0.04);
+  border-left: 1px solid rgba(255, 107, 53, 0.12);
+  border-right: 1px solid rgba(255, 107, 53, 0.12);
+  font-weight: 700;
+  color: var(--color-success);
+}
+
+.tableCell.bmcCell {
+  justify-content: center;
+  color: var(--color-muted);
+}
+
+/* ── Win / lose indicators ───────────────────────────────── */
+.win {
+  color: var(--color-success);
+  font-size: 1.1rem;
+}
+
+.lose {
+  color: var(--color-danger);
+  font-size: 1.1rem;
+}
+
+.neutral {
+  color: var(--color-muted);
+  font-size: 1.1rem;
+}
+
+/* ── Bottom tagline ──────────────────────────────────────── */
+.verdict {
+  margin-top: var(--space-12);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.verdictText {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.verdictText span {
+  background: var(--gradient-carnival);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.verdictSub {
+  font-size: var(--text-base);
+  color: var(--color-muted);
+  max-width: 500px;
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .reasonsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .reasonsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .tableHeadCell,
+  .tableCell {
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--text-sm);
+  }
+
+  .tableHeadCell.dimmed {
+    display: none;
+  }
+
+  .tableCell.bmcCell {
+    display: none;
+  }
+
+  .tableHead {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .tableRow {
+    grid-template-columns: 2fr 1fr;
+  }
+  
+}

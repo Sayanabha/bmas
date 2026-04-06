@@ -1,0 +1,392 @@
+/* src/styles/Donation.module.css */
+
+/* ── Section wrapper ─────────────────────────────────────── */
+.section {
+  padding: var(--space-24) 0;
+  background: var(--color-surface-2);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Warm glow in background */
+.section::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle,
+    rgba(255, 107, 53, 0.08) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* ── Inner layout ────────────────────────────────────────── */
+.inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  align-items: start;
+}
+
+/* ── Left: donation form ─────────────────────────────────── */
+.formSide {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+/* ── Amount selector ─────────────────────────────────────── */
+.amountSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.amountLabel {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* Preset amount buttons row */
+.presetRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+}
+
+.presetBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: var(--space-4) var(--space-2);
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-family: var(--font-heading);
+}
+
+.presetBtn:hover {
+  border-color: var(--color-primary);
+  background: rgba(255, 107, 53, 0.06);
+  transform: translateY(-2px);
+}
+
+.presetBtn.selected {
+  border-color: var(--color-primary);
+  background: rgba(255, 107, 53, 0.10);
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.15);
+}
+
+.presetAmount {
+  font-size: var(--text-xl);
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.presetBtn.selected .presetAmount {
+  color: var(--color-primary);
+}
+
+.presetLabel {
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+  font-weight: 500;
+}
+
+/* ── Custom amount input ─────────────────────────────────── */
+.customRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3) var(--space-4);
+  transition: border-color var(--transition-fast);
+}
+
+.customRow:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.15);
+}
+
+.currencySymbol {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.customInput {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-text);
+  outline: none;
+  width: 100%;
+}
+
+.customInput::placeholder {
+  color: var(--color-muted);
+  font-weight: 400;
+}
+
+/* ── Shorbot counter ─────────────────────────────────────── */
+.counter {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+}
+
+.counterEmoji {
+  font-size: 1.8rem;
+  animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+  0%,100% { transform: rotate(0deg);   }
+  25%      { transform: rotate(-10deg); }
+  75%      { transform: rotate(10deg);  }
+}
+
+.counterText {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  color: var(--color-text-soft);
+}
+
+.counterText strong {
+  color: var(--color-primary);
+  font-size: var(--text-lg);
+}
+
+/* ── Note box ────────────────────────────────────────────── */
+.note {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: rgba(46, 196, 182, 0.08);
+  border: 1px solid rgba(46, 196, 182, 0.20);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  color: var(--color-text-soft);
+  line-height: 1.6;
+}
+
+.noteIcon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ── Right: QR + UPI side ────────────────────────────────── */
+.qrSide {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+/* ── QR card ─────────────────────────────────────────────── */
+.qrCard {
+  width: 100%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Rainbow top border */
+.qrCard::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--gradient-carnival);
+}
+
+.qrTitle {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-text);
+  text-align: center;
+}
+
+/* QR code image container */
+.qrImageWrapper {
+  width: 200px;
+  height: 200px;
+  background: #fff;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+}
+
+.qrImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+}
+
+/* Placeholder when no QR image yet */
+.qrPlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  background: #f8f8f8;
+  border-radius: var(--radius-md);
+  border: 2px dashed #ddd;
+}
+
+.qrPlaceholder span {
+  font-size: 2.5rem;
+}
+
+.qrPlaceholder p {
+  font-size: var(--text-xs);
+  color: #999;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.qrUpiId {
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  background: var(--color-surface-2);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  letter-spacing: 0.03em;
+}
+
+/* ── UPI app deep-link button ────────────────────────────── */
+.upiBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  width: 100%;
+  padding: var(--space-4) var(--space-6);
+  background: var(--gradient-primary);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--text-base);
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 18px rgba(255, 107, 53, 0.35);
+}
+
+.upiBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(255, 107, 53, 0.50);
+  color: #fff;
+}
+
+.upiNote {
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* ── Supporter wall ──────────────────────────────────────── */
+.supporterWall {
+  margin-top: var(--space-16);
+  text-align: center;
+}
+
+.supporterTitle {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-6);
+}
+
+.supporters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+}
+
+.supporter {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  font-family: var(--font-heading);
+  color: var(--color-text-soft);
+  transition: all var(--transition-fast);
+}
+
+.supporter:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: scale(1.04);
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .inner {
+    grid-template-columns: 1fr;
+  }
+  .qrSide {
+    order: -1;
+  }
+}
+
+@media (max-width: 480px) {
+  .presetRow {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-2);
+  }
+  .presetAmount {
+    font-size: var(--text-lg);
+  }
+}

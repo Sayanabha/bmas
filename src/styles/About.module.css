@@ -1,0 +1,219 @@
+/* src/styles/About.module.css */
+
+/* ── Section wrapper ─────────────────────────────────────── */
+.about {
+  padding: var(--space-24) 0;
+  background: var(--color-surface-2);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle top wave divider */
+.about::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: var(--color-bg);
+  clip-path: ellipse(55% 100% at 50% 0%);
+}
+
+/* ── Inner layout ────────────────────────────────────────── */
+.inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  align-items: center;
+}
+
+/* ── Left: text content ──────────────────────────────────── */
+.textSide {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.intro {
+  font-size: var(--text-lg);
+  color: var(--color-text-soft);
+  line-height: 1.85;
+}
+
+.intro strong {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.intro em {
+  font-style: normal;
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+/* ── Quote block ─────────────────────────────────────────── */
+.quote {
+  position: relative;
+  padding: var(--space-6) var(--space-6) var(--space-6) var(--space-10);
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border-left: 4px solid var(--color-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.quote::before {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  left: var(--space-4);
+  font-size: 5rem;
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+  opacity: 0.2;
+  line-height: 1;
+}
+
+.quoteText {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-text);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.quoteAuthor {
+  margin-top: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
+/* ── Right: cards grid ───────────────────────────────────── */
+.cardsSide {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+/* ── Individual trait card ───────────────────────────────── */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Carnival corner accent */
+.card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  background: var(--gradient-carnival);
+  opacity: 0.07;
+  border-radius: 0 var(--radius-lg) 0 100%;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-primary);
+}
+
+/* Make the first card span full width — slightly bigger */
+.cardFull {
+  grid-column: 1 / -1;
+}
+
+.cardEmoji {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.cardTitle {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.cardDesc {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+
+/* ── Fun fact chips ──────────────────────────────────────── */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  border: 1.5px solid transparent;
+  transition: all var(--transition-fast);
+  cursor: default;
+}
+
+.chip:hover {
+  transform: scale(1.06);
+}
+
+.chipOrange {
+  background: rgba(255, 107, 53, 0.10);
+  color: var(--color-primary);
+  border-color: rgba(255, 107, 53, 0.25);
+}
+
+.chipTeal {
+  background: rgba(46, 196, 182, 0.10);
+  color: var(--color-accent);
+  border-color: rgba(46, 196, 182, 0.25);
+}
+
+.chipGold {
+  background: rgba(255, 215, 0, 0.12);
+  color: #b8860b;
+  border-color: rgba(255, 215, 0, 0.30);
+}
+
+[data-theme="dark"] .chipGold {
+  color: var(--color-secondary);
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+}
+
+@media (max-width: 480px) {
+  .cardsSide {
+    grid-template-columns: 1fr;
+  }
+  .cardFull {
+    grid-column: 1;
+  }
+}

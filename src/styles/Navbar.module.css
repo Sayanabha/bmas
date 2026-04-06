@@ -1,0 +1,259 @@
+/* src/styles/Navbar.module.css */
+
+/* ── Outer wrapper ───────────────────────────────────────── */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--navbar-height);
+  z-index: 1000;
+  transition: background var(--transition-slow),
+              box-shadow var(--transition-slow);
+}
+
+/* Scrolled state — added by JS when page scrolls down */
+.navbar.scrolled {
+  background: var(--color-surface);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Transparent at top of page */
+.navbar:not(.scrolled) {
+  background: transparent;
+}
+
+/* ── Inner layout ────────────────────────────────────────── */
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+/* ── Logo ────────────────────────────────────────────────── */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  text-decoration: none;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: var(--text-xl);
+  color: var(--color-text);
+  transition: transform var(--transition-fast);
+}
+
+.logo:hover {
+  transform: scale(1.04);
+  color: var(--color-text);
+}
+
+.logoEmoji {
+  font-size: 1.6rem;
+  animation: wobble 3s ease-in-out infinite;
+}
+
+.logoText span {
+  color: var(--color-primary);
+}
+
+@keyframes wobble {
+  0%, 100% { transform: rotate(0deg);   }
+  20%       { transform: rotate(-8deg); }
+  40%       { transform: rotate(8deg);  }
+  60%       { transform: rotate(-4deg); }
+  80%       { transform: rotate(4deg);  }
+}
+
+/* ── Desktop nav links ───────────────────────────────────── */
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  list-style: none;
+}
+
+.navLinks a {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: var(--text-base);
+  color: var(--color-text-soft);
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 2px;
+  transition: color var(--transition-fast);
+}
+
+/* Animated underline on hover */
+.navLinks a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-full);
+  transition: width var(--transition-base);
+}
+
+.navLinks a:hover {
+  color: var(--color-primary);
+}
+
+.navLinks a:hover::after {
+  width: 100%;
+}
+
+/* ── Right side controls ─────────────────────────────────── */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* ── Theme toggle button ─────────────────────────────────── */
+.themeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.themeBtn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: rotate(20deg) scale(1.1);
+  box-shadow: var(--shadow-glow);
+}
+
+/* ── CTA Button ──────────────────────────────────────────── */
+.ctaBtn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-5);
+  background: var(--gradient-primary);
+  color: #fff !important;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--text-sm);
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 14px rgba(255, 107, 53, 0.35);
+  white-space: nowrap;
+}
+
+.ctaBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.50);
+  color: #fff !important;
+}
+
+/* ── Mobile hamburger ────────────────────────────────────── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: var(--radius-md);
+  transition: background var(--transition-fast);
+}
+
+.hamburger:hover {
+  background: var(--color-surface-2);
+}
+
+.hamburger span {
+  display: block;
+  height: 2px;
+  background: var(--color-text);
+  border-radius: var(--radius-full);
+  transition: all var(--transition-base);
+}
+
+/* Hamburger → X animation */
+.hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Mobile menu drawer ──────────────────────────────────── */
+.mobileMenu {
+  position: fixed;
+  top: var(--navbar-height);
+  left: 0;
+  right: 0;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  box-shadow: var(--shadow-md);
+
+  /* Slide in from top */
+  transform: translateY(-110%);
+  opacity: 0;
+  transition: transform var(--transition-base),
+              opacity var(--transition-base);
+  pointer-events: none;
+}
+
+.mobileMenu.open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+
+.mobileMenu a {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: var(--text-lg);
+  color: var(--color-text);
+  text-decoration: none;
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--color-border);
+  transition: color var(--transition-fast);
+}
+
+.mobileMenu a:last-child {
+  border-bottom: none;
+}
+
+.mobileMenu a:hover {
+  color: var(--color-primary);
+}
+
+/* ── Responsive: show hamburger, hide nav links ──────────── */
+@media (max-width: 768px) {
+  .navLinks { display: none; }
+  .ctaBtn   { display: none; }
+  .hamburger { display: flex; }
+}

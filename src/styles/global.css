@@ -1,0 +1,319 @@
+/* ============================================================
+   BMAS — Global Styles
+   Bengali Carnival Color System + Typography + Resets
+   ============================================================ */
+
+/* ---------- Google Font Variables ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
+
+/* ---------- CSS Custom Properties (Light Mode) ---------- */
+:root {
+  /* Colors */
+  --color-primary:    #FF6B35;   /* Marigold orange — like phool mala */
+  --color-secondary:  #FFD700;   /* Turmeric gold — like holud */
+  --color-accent:     #2EC4B6;   /* Peacock teal */
+  --color-danger:     #E63946;   /* Sindoor red */
+  --color-success:    #06D6A0;   /* Neem green */
+
+  /* Backgrounds */
+  --color-bg:         #FFFBF2;   /* Warm parchment */
+  --color-surface:    #FFFFFF;   /* Card white */
+  --color-surface-2:  #FFF5E4;   /* Slightly warm card */
+
+  /* Text */
+  --color-text:       #1A1A2E;   /* Deep ink */
+  --color-text-soft:  #3D3D5C;   /* Softer ink */
+  --color-muted:      #6B7280;   /* Muted grey */
+
+  /* Borders */
+  --color-border:     #E5E7EB;
+
+  /* Gradients */
+  --gradient-hero: linear-gradient(135deg, #FFF5E4 0%, #FFFBF2 50%, #E8F8F7 100%);
+  --gradient-primary: linear-gradient(135deg, #FF6B35, #FF8E53);
+  --gradient-carnival: linear-gradient(135deg, #FF6B35 0%, #FFD700 50%, #2EC4B6 100%);
+
+  /* Typography */
+  --font-heading:  'Baloo 2', 'Segoe UI', sans-serif;
+  --font-body:     'Hind Siliguri', 'Segoe UI', sans-serif;
+
+  /* Font sizes — fluid scale */
+  --text-xs:    0.75rem;    /* 12px */
+  --text-sm:    0.875rem;   /* 14px */
+  --text-base:  1rem;       /* 16px */
+  --text-lg:    1.125rem;   /* 18px */
+  --text-xl:    1.25rem;    /* 20px */
+  --text-2xl:   1.5rem;     /* 24px */
+  --text-3xl:   1.875rem;   /* 30px */
+  --text-4xl:   2.25rem;    /* 36px */
+  --text-5xl:   3rem;       /* 48px */
+  --text-6xl:   3.75rem;    /* 60px */
+
+  /* Spacing */
+  --space-1:   0.25rem;
+  --space-2:   0.5rem;
+  --space-3:   0.75rem;
+  --space-4:   1rem;
+  --space-6:   1.5rem;
+  --space-8:   2rem;
+  --space-10:  2.5rem;
+  --space-12:  3rem;
+  --space-16:  4rem;
+  --space-20:  5rem;
+  --space-24:  6rem;
+
+  /* Border radius */
+  --radius-sm:   0.375rem;
+  --radius-md:   0.75rem;
+  --radius-lg:   1.25rem;
+  --radius-xl:   2rem;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md:  0 4px 16px rgba(0,0,0,0.10), 0 2px 6px rgba(0,0,0,0.06);
+  --shadow-lg:  0 10px 40px rgba(0,0,0,0.12), 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-glow: 0 0 30px rgba(255, 107, 53, 0.25);
+
+  /* Transitions */
+  --transition-fast:   150ms ease;
+  --transition-base:   250ms ease;
+  --transition-slow:   400ms ease;
+
+  /* Layout */
+  --max-width: 1100px;
+  --navbar-height: 70px;
+}
+
+/* ---------- Dark Mode Overrides ---------- */
+[data-theme="dark"] {
+  --color-bg:         #0F0E17;
+  --color-surface:    #1A1A2E;
+  --color-surface-2:  #16213E;
+  --color-text:       #FFFBF2;
+  --color-text-soft:  #D4C9B8;
+  --color-muted:      #9CA3AF;
+  --color-border:     #2D2D44;
+  --color-primary:    #FF8C5A;
+  --color-secondary:  #FFE44D;
+  --color-accent:     #3DDDD0;
+  --gradient-hero: linear-gradient(135deg, #0F0E17 0%, #1A1A2E 50%, #0D1B2A 100%);
+  --shadow-glow: 0 0 40px rgba(255, 140, 90, 0.30);
+}
+
+/* ---------- CSS Reset ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.7;
+  transition: background-color var(--transition-slow), color var(--transition-slow);
+  overflow-x: hidden;
+}
+
+/* ---------- Typography ---------- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+  color: var(--color-text);
+}
+
+h1 { font-size: var(--text-5xl); font-weight: 800; }
+h2 { font-size: var(--text-4xl); font-weight: 700; }
+h3 { font-size: var(--text-2xl); font-weight: 600; }
+
+p {
+  color: var(--color-text-soft);
+  font-size: var(--text-lg);
+  line-height: 1.8;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-accent);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font-body);
+  border: none;
+  outline: none;
+}
+
+/* ---------- Utility Classes ---------- */
+
+/* Container — centers content with max width */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+/* Section spacing */
+.section {
+  padding: var(--space-24) 0;
+}
+
+/* Section heading group */
+.section-label {
+  display: inline-block;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-primary);
+  background: rgba(255, 107, 53, 0.1);
+  padding: var(--space-1) var(--space-4);
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-4);
+}
+
+.section-title {
+  font-size: var(--text-4xl);
+  font-weight: 800;
+  margin-bottom: var(--space-4);
+  background: var(--gradient-carnival);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-subtitle {
+  font-size: var(--text-lg);
+  color: var(--color-muted);
+  max-width: 600px;
+}
+
+/* ---------- Scroll Animation Base ---------- */
+/* Elements start invisible and slide up */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delay helpers */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+
+/* ---------- Scrollbar Styling ---------- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: var(--radius-full);
+}
+
+/* ---------- Selection Color ---------- */
+::selection {
+  background: var(--color-secondary);
+  color: var(--color-text);
+}
+
+/* ---------- Responsive Breakpoints ---------- */
+@media (max-width: 768px) {
+  h1 { font-size: var(--text-4xl); }
+  h2 { font-size: var(--text-3xl); }
+  .section { padding: var(--space-16) 0; }
+  .section-title { font-size: var(--text-3xl); }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: var(--text-3xl); }
+  h2 { font-size: var(--text-2xl); }
+  .container { padding: 0 var(--space-4); }
+}
+/* ── Footer (global, not module) ── */
+.footer-root {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-10) 0;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.footer-logo {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.footer-logo span {
+  color: var(--color-primary);
+}
+
+.footer-tagline {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
+.footer-right {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.footer-right a {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.footer-right a:hover {
+  color: var(--color-accent);
+}
+
+@media (max-width: 600px) {
+  .footer-inner { flex-direction: column; text-align: center; }
+  .footer-right { text-align: center; }
+}

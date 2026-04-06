@@ -1,0 +1,139 @@
+/* src/styles/SocialLinks.module.css */
+
+/* ── Section wrapper ─────────────────────────────────────── */
+.section {
+  padding: var(--space-20) 0;
+  background: var(--color-bg);
+  position: relative;
+}
+
+/* ── Header ──────────────────────────────────────────────── */
+.header {
+  text-align: center;
+  margin-bottom: var(--space-12);
+}
+
+/* ── Cards grid ──────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ── Individual social card ──────────────────────────────── */
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-8) var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  text-decoration: none;
+  color: var(--color-text);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Bottom fill effect on hover */
+.card::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 0%;
+  border-radius: var(--radius-xl);
+  transition: height var(--transition-base);
+  z-index: 0;
+}
+
+.card:hover::before {
+  height: 100%;
+}
+
+/* GitHub */
+.card.github::before  { background: rgba(36,  41,  46,  0.06); }
+.card.twitter::before { background: rgba(29,  161, 242, 0.06); }
+.card.linkedin::before{ background: rgba(10,  102, 194, 0.06); }
+.card.email::before   { background: rgba(255, 107, 53,  0.06); }
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card.github:hover  { border-color: #24292e; }
+.card.twitter:hover { border-color: #1da1f2; }
+.card.linkedin:hover{ border-color: #0a66c2; }
+.card.email:hover   { border-color: var(--color-primary); }
+
+/* ── Icon circle ─────────────────────────────────────────── */
+.iconCircle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  position: relative;
+  z-index: 1;
+  transition: transform var(--transition-fast);
+}
+
+.card:hover .iconCircle {
+  transform: scale(1.12) rotate(-5deg);
+}
+
+.github  .iconCircle { background: rgba(36,  41,  46,  0.10); }
+.twitter .iconCircle { background: rgba(29,  161, 242, 0.10); }
+.linkedin .iconCircle{ background: rgba(10,  102, 194, 0.10); }
+.email   .iconCircle { background: rgba(255, 107, 53,  0.10); }
+
+/* ── Card text ───────────────────────────────────────────── */
+.cardName {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--color-text);
+  position: relative;
+  z-index: 1;
+}
+
+.cardHandle {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  position: relative;
+  z-index: 1;
+}
+
+.cardDesc {
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+  text-align: center;
+  line-height: 1.5;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 400px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+  }
+  .iconCircle {
+    width: 48px;
+    height: 48px;
+    font-size: 1.3rem;
+  }
+}
