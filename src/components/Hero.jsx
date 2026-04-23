@@ -51,7 +51,7 @@ export default function Hero() {
         {/* Avatar */}
         <div className={styles.avatarWrapper}>
           <div className={styles.avatar}>
-  <img src="/dp.jpg" alt="Profile" className={styles.avatarImg} />
+  <img src="dp.png" alt="Profile" className={styles.avatarImg} />
 </div>
           <div className={styles.avatarRing} />
         </div>
@@ -59,7 +59,7 @@ export default function Hero() {
         {/* Badge */}
         <div className={styles.badge}>
           <Sparkles size={14} strokeWidth={2.5} />
-          Not Buy Me a Coffee. Better. Amar.
+          Not Buy Me a Coffeecino (or anything). Better. Amar.
         </div>
 
         {/* Main heading */}
@@ -75,8 +75,8 @@ export default function Hero() {
         <p className={styles.sub}>
           Hi, I'm <em>Sayanabha</em>, বাঙালি
           from কলকাতা who builds things, breaks things, and occasionally
-          has good ideas (am i a political party?.. nah they lack good ideas). Buy Me a Coffee took me too long to setup (not a fan of coffee),
-          so built this. So, shorbot. <em>Ektai chai.</em>
+          has good ideas (am i a political party?.. nah they don't build & lack good ideas). Buy Me a Coffeecino took me too long to setup (plus I'm not a fan of coffee),
+          so built this. Shorbot. <em>Ektai chai.</em>
         </p>
 
         {/* Stats row */}

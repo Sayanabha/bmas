@@ -86,13 +86,13 @@ export default function About() {
             </p>
 
             <p className={'reveal delay-2 ' + styles.intro}>
-              I made this site because <strong>Buy Me a Coffee</strong> was not for me, and frankly — <em>I don't drink coffee</em>{' '}. I drink shorbot. And fishfry. 🥤
+              I made this site because <strong>Buy Me a Coffeecino</strong> was not for me, and frankly — <em>I don't drink coffee</em>{' '}. I drink shorbot. And fishfry. 🥤
             </p>
 
             {/* Quote block */}
             <div className={'reveal delay-3 ' + styles.quote}>
               <p className={styles.quoteText}>
-                "জীবনটাই লস্যি, চা-কফি দিয়ে কী হবে? শরবত চাই।"
+                "ভালোবাসি পর্বত, সাথে একটু শরবত"
               </p>
               <p className={styles.quoteAuthor}>
                 — Sayanabha, probably, during on a random weekend at 11pm

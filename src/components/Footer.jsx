@@ -26,7 +26,7 @@ export default function Footer() {
             <p>
               © {year} · No copyright, share freely ·{' '}
               <a
-                href="https://upi.org"
+                href="https://sayanabha.netlify.app/"
                 target="_blank"
                 rel="noopener noreferrer"
               >

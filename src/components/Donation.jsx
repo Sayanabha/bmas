@@ -7,7 +7,7 @@ import styles from '../styles/Donation.module.css'
 // ── Config — UPDATE THESE with your real details ──────────
 const UPI_ID      = 'sayanabhachandraitsme@okaxis'          // 👈 Replace with your UPI ID
 const UPI_NAME    = 'Sayanabha'             // 👈 Your name as in UPI
-const QR_IMAGE    = '/upi-qr.jpeg'                  // 👈 Set to '/upi-qr.png' after adding QR
+const QR_IMAGE    = '/qr.png'                  // 👈 Set to '/upi-qr.png' after adding QR
 const SHORBOT_COST = 50                     // ₹50 = 1 shorbot
 
 // Preset donation tiers

@@ -13,7 +13,7 @@ const REASONS = [
   {
     icon: '💸',
     title: 'Zero. Fees.',
-    desc: 'Buy Me a Coffee takes a cut. UPI takes nothing. Your full ₹50 buys me a full shorbot. Simple math.',
+    desc: 'Buy Me a Coffeecino takes a cut. UPI takes nothing. Your full ₹50 buys me a full shorbot. Simple math.',
   },
   {
     icon: '🥤',
@@ -64,7 +64,7 @@ export default function WhyShorbot() {
             Why Shorbot beats Coffee
           </h2>
           <p className={'section-subtitle'} style={{ margin: '0 auto' }}>
-            Buy Me a Coffee is a great idea. Not for me.
+            Buy Me a Coffeecino is a great idea. Not for me.
             So I made it. hehe.
           </p>
         </div>
